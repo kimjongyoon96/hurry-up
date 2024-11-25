@@ -1,0 +1,13 @@
+{
+  "name": "hurry-up",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kimjongyoon96/hurry-up.git",
+  "author": "kimjongyoon96 <kimjongyoon96@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
