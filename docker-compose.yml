@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  app:
+    # Dockerfile을 사용하여 빌드
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    ports:
+      - '3009:3009'
+    volumes:
+      - .:/app # 로컬 디렉토리를 /app으로 마운트
+    working_dir: /app
+    # 쉘 파일을 통해 애플리케이션 실행
+    command: /bin/sh -c "./entrypoint-dev.sh app"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: marx # 사용할 사용자명 입력
+      POSTGRES_PASSWORD: dkrlaos1 # 사용할 비밀번호 입력
+      POSTGRES_DB: postgres # 사용할 데이터베이스 이름 입력
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data # 데이터베이스 볼륨을 유지하여 데이터가 유지되도록 설정
+
+# 볼륨 정의
+volumes:
+  pgdata:
